@@ -1,0 +1,9 @@
+1.Solid
+2.Singleton Design Pattern.
+3.Factory Method Design Pattern.
+4.Facade Design Pattern.
+5.Strategy Design Pattern.
+6.Observer Design Pattern.
+7.Builder Design Pattern.
+8.Adapter Design Pattern. 
+9.PHP vs GO
