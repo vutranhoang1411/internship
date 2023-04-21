@@ -1,14 +1,15 @@
 package main
 
 // wrong
+// Allmost every anymal can't both swim and fly
 type Animal interface {
 	eat()
 	swim()
 	fly()
 }
 
-//right
-
+///right
+// seperate big interface into smaller interface, combine related method
 type Animal2 interface {
 	eat()
 }

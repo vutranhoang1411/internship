@@ -13,7 +13,7 @@ public:
 };
 class ParttimeWorker: public Employee{
     ParttimeWorker(){}
-    void otherWork(){} //wrong, since Parttime worker can't check attendance, so Parttime working can't inherit Employee
+    void otherWork(){} //wrong, since Parttime worker can't check attendance, so ParttimeWorker can't inherit Employee
 };
 
 //right

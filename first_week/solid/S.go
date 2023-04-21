@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 //wrong way
-
 type Employee struct {
 }
 
