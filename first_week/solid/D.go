@@ -2,11 +2,19 @@ package main
 
 import "fmt"
 
+func someProcess(maker TokenMaker){
+	//use interface instead of implementation
+	maker.genToken()
+	maker.validateToken()
+}
+
+//interface for the token component
 type TokenMaker interface{
 	genToken()
 	validateToken()
 }
 
+//different implementation of TokenMaker
 type JWTMaker struct{
 
 }
@@ -25,10 +33,4 @@ func (m PasetoMaker)genToken(){
 }
 func (m PasetoMaker)validateToken(){
 	fmt.Printf("validate paseto token")
-}
-
-func someProcess(maker TokenMaker){
-	//use interface instead of implementation
-	maker.genToken()
-	maker.validateToken()
 }

@@ -18,6 +18,7 @@ func (e Employee) TaskB() {
 type Employee2 interface {
 	work()
 }
+//seperate taskA and taskB into 2 struct instead of bind them together
 type EmployeeTaskA struct {
 }
 type EmployeeTaskB struct {
