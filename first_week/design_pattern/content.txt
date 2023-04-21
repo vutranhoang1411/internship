@@ -1,0 +1,75 @@
+----Creational pattern
+1. Singleton design pattern
+- Singleton là một design pattern thuộc nhóm Creational, khi một class thực hiện theo pattern này, nó đảm bảo chỉ
+có 1 instance của class này tồn tại và cung cấp cách để truy cập tới instance này
+- Singleton có thể dùng để truy cập tới instance trên như một biến global, đồng thời bảo vệ nó khỏi bị thay đổi 
+- Sử dụng pattern này khi có class nào đó mà chỉ nên có 1 instance duy nhất (vd: class để kết nối db), hoặc khi muốn
+một global variable được kiểm soát chặt chẽ
+- Pros:
++ Đảm bảo một class chỉ có một instance (nếu ta thật sự muốn cái này)
++ Kiểm soát chặt hơn việc khởi tạo và truy cập tới instance kể trên
+- Cons:
++ Chạy multithread có thể dẫn dến việc khởi tạo nhiều singleton instance
++ Vi phạm quy tắc Single responsibility principle, vì nó giải quyết 2 vấn đề cùng lúc
+
+2. Factory Method design pattern
+- Factory Method là một design pattern thuộc nhóm Creational, nó cung cấp cấp cách khởi tạo một đối tượng thông qua một interface/class cha,
+nhưng các class con có thể thay đổi loại object sẽ được tạo ra
+- Sử dụng pattern này khi ta không biết chính xác trước kiểu cụ thể object sẽ sử dụng, hoặc khi muốn cung cấp cách để client có thể extend
+library mình viết (dùng factory method bên trong library, client có thể thay đổi implementation của interface này tùy theo ý của họ)
+- Có thể dùng như singleton
+- Pros:
++ Tránh sự liên kết chặt giữa product và constructor của nó
++ Single Responsiblility Principle, khiến code dễ dùng
++ Open/Closed Responsibility Principle, có thể add nhiều kiểu product mới vào mà không phá vỡ code trước đó
+- Cons:
++ Code có thể trở nên phức tạp hơn vì sử dụng nhiều class, add product type mới sẽ cần add thêm class
+
+3. Builder design pattern
+- Builder là một design pattern thuộc nhóm Creational, cho phép tạo object step by step, với những thuộc tính khác nhau
+- Sử dụng khi một object có constructor quá lớn (giả sử 10 attribute), khi đấy nếu dùng hàm constructor thì sẽ khó
+vì 1 số  attribute có thể không cần nhập/có default value, dẫn đến phải tạo nhiều constructor khác nhau tùy vào số attribute truyền vào.
+Dùng Builder để build object step by step, chỉ thêm những attribute cần thiết 
+- Pros:
++ Xây dựng object step by step, tránh phải sử dụng những constructor cồng kềnh
++ Sử dụng 1 cách build chung khi build các product khác nhau
+- Cons:
++ Code trở nên phức tạp vì cần tạo nhiều class
+
+---Structural pattern
+4. Facade design pattern
+- Facade là một design pattern thuộc nhóm Structural, nó cung cấp một interfaace đơn giản hơn cho 1 library/framework/complex system
+- Dùng khi cần một interface tối giản/đủ dùng tới 1 library (chỉ xài một số chức năng của library, gộp những chức năng này vào 1 facade object
+dùng object này thay vì library)
+- Pros:
++ Tránh những cái complexity của các complex system
+- Cons:
++ Có khả năng vi phạm nguyên tắc Single responsibility, 1 object ôm nhiều method
+
+5. Adapter design pattern
+- Adapter là một design pattern thuộc nhóm Structural, giúp kết nối những object có interface không tương thích nhau
+- Dùng khi muốn reuse code cũ nhưng interface không tương thích hoặc extend chức năng của class cũ
+- Pros:
++ Open/Closed principle, có thể viết thêm code mới mà kh break code cũ
+- Cons:
++ Complexity có thể tăng vì cần tạo thêm các adapter.
+
+---Behavioral pattern
+6. Observer design pattern
+- Observer là một design pattern thuộc nhóm Behavioral, đưa ra một cơ chế để notify tới những object theo dõi (observer)
+khi có một event nào đó xảy ra với 1 object gốc (publisher)
+- Sử dụng khi một thay đổi về state của 1 object (publisher) cần dẫn tới thay đổi ở 1 số object khác (observer), và set object này dynamic
+- Pros:
++ Open/Closed principle, thay đổi observer mà không cần thay đổi code của publisher
++ Có thể tạo connect giữa object ở runtime
+
+7.Strategy design pattern
+- Strategy là một design pattern thuộc nhóm Behavioral, giúp define nhiều cách để thực hiện 1 operation và chọn cách ở runtime
+- Dùng khi:
++ Muốn sử dụng nhiều cách cho 1 operation trong 1 object và có thể switch từ cách này sang cách khác ở runtime
++ Dùng khi có nhiều class implement 1 behavior gần giống nhau, khi đó ta tách các behavior này thành 1 khối riêng, các class ban đầu có thể gộp lại
+- Pros:
++ Có thể đổi algorithm ở runtime, tách implementation của algorithm ra khỏi code sử dụng nó
++ Open/closed principle
+- Cons:
++ Có thể khiến code trở nên phức tạp hơn vì cần thêm extra class + interface
