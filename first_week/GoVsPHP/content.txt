@@ -1,7 +1,8 @@
 1. PHP(Hypertext Preprocessor)
 - "A popular general-purpose scripting language that is especially suited to web development"
 - PHP là một ngôn ngữ scripting, chủ yếu được dùng trong phát triển web (mục đích ban đầu được sinh ra là để làm web),
-thường được sử dụng theo dạng 1 server sẽ xử lí file php rồi gen ra html trả về, code có thể nhúng vào html (thực ra là file php có html syntax)
+thường được sử dụng theo dạng 1 server (web server này cần được setup trước) sẽ xử lí file php rồi gen ra html trả về,
+code có thể nhúng vào html (thực ra là file php có html syntax)
 - Dynamic type (type của 1 biến có thể đổi ở runtime) và weak type (type của biến có thể bị đổi 1 cách implicit, 101 + "dog" = "101dog")
 - Cung cấp nhiều built-in function/object liên quan tới web (cookie, get/post object, ), giúp xử lí sẵn/cung cấp cách xử lí những cái này, chỉ cần lấy ra xài
 - Nhiều built-in support cho nhiều loại database khác nhau
@@ -12,4 +13,5 @@ thường được sử dụng theo dạng 1 server sẽ xử lí file php rồi
 network (mạng) và những dự án có source code rất lớn
 - static typed (type của 1 biến được xác định ở compile time) và strong type 
 - build rất nhanh
-- Hỗ trợ concurrency từ trong máu, sử dụng goroutine (1 dạng lightway thread) và channel
+- Có built-in tool giúp install các library từ bên ngoài (go mod)
+- Hỗ trợ concurrency tốt, sử dụng goroutine (1 dạng lightweight thread) và channel
