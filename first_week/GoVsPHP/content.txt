@@ -4,14 +4,31 @@
 thường được sử dụng theo dạng 1 server (web server này cần được setup trước) sẽ xử lí file php rồi gen ra html trả về,
 code có thể nhúng vào html (thực ra là file php có html syntax)
 - Dynamic type (type của 1 biến có thể đổi ở runtime) và weak type (type của biến có thể bị đổi 1 cách implicit, 101 + "dog" = "101dog")
-- Cung cấp nhiều built-in function/object liên quan tới web (cookie, get/post object, ), giúp xử lí sẵn/cung cấp cách xử lí những cái này, chỉ cần lấy ra xài
-- Nhiều built-in support cho nhiều loại database khác nhau
-
+- Pros:
++ Simple và stable
++ Cộng đồng lớn, powerful library support
++ platform-independent, có thể chạy trên UNIX lẫn window
++ Nhiều built-in support cho nhiều loại database khác nhau
++ Cung cấp nhiều built-in function/object liên quan tới web (cookie, get/post object, ), giúp xử lí sẵn/cung cấp cách xử lí những cái này, chỉ cần lấy ra xài
+- Cons:
++ Nhiều built-in function nhưng nó nằm ở hết ở global, không phân package nên xài có thể khó nhớ
++ Weaktype, nếu không quen với behavior của nó thì có khả năng dẫn tới bị sai
++ Kém về handle error
++ 
 2. Go
 - "An open source programming language that makes it easy to build simple, reliable, and efficient software"
 - Go là một ngôn ngữ lập trình biên dịch, ra đời vì một sứ mệnh giúp tăng năng suất phần mềm, đặc biệt là ở lĩnh vực multicore processing (xử lý đa nhân),
 network (mạng) và những dự án có source code rất lớn
 - static typed (type của 1 biến được xác định ở compile time) và strong type 
-- build rất nhanh
-- Có built-in tool giúp install các library từ bên ngoài (go mod)
-- Hỗ trợ concurrency tốt, sử dụng goroutine (1 dạng lightweight thread) và channel
+- Pros:
++ Có standard library cho testing, có lượng standard library tốt
++ Strong và static type nên bắt lỗi nhanh từ lúc code + precompile, tránh lỗi ở runtime
++ Compile nhanh, chạy nhanh
++ Hỗ trợ concurrency tốt, sử dụng goroutine (1 dạng lightweight thread) và channel
++ Simple, dễ sử dụng
++ Có sẵn dependency management (go mod)
++ Memory safe, cho phép sử dụng con trỏ nhưng compiler quyết định việc cấp phát trong heap hay stack, có garbage collection
+- Cons:
++ Vì simple + mới nên lack feature, cần rely nhiều vào thư viện bên ngoài
++ Syntax đơn giản nên phải code nhiều
++ Comunity nhỏ
