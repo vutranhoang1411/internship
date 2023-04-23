@@ -31,4 +31,4 @@ network (mạng) và những dự án có source code rất lớn
 - Cons:
 + Vì simple + mới nên lack feature, cần rely nhiều vào thư viện bên ngoài
 + Syntax đơn giản nên phải code nhiều
-+ Comunity nhỏ
++ Comunity nhỏ.
