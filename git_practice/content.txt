@@ -1,0 +1,27 @@
+1. protect branches
+- You can enforce certain workflows or requirements before a collaborator can push changes to a branch in your repository, including merging a pull request into the branch, by creating a branch protection rule.
+- By default, each branch protection rule disables force pushes to the matching branches and prevents the matching branches from being deleted. You can optionally disable these restrictions and enable additional branch protection settings.
+- You can create a branch protection rule in a repository for a specific branch, all branches, or any branch that matches a name pattern you specify with fnmatch syntax
+- For each branch protection rule, you can choose to enable or disable the following settings:
++ Require pull request reviews before merging: pull request phải được được approve trước khi có thể merge
++ Require status checks before merging: tất cả CI test phải pass trước khi có thể merge
++ Require conversation resolution before merging: tất cả comment trên pull request phải được resolve trước khi merge
++ Require signed commits: chỉ có thể push commit đã được kí và verified
++ Require linear history: yêu cầu commit phải có linear history (tạo bởi rebase) để có thể merge pull request (ngăn commit tạo bởi merge)
++ Require deployments to succeed before merging: tất cả change phải được deploy thành công trước khi có thể được merge
++ Lock branch: đảm bảo không có commit nào có thể được tạo ra trên branch đã khoá
++ Do not allow bypassing the above settings: dùng để áp dụng tất cả protection rule ngay cả với admin
++ Restrict who can push to matching branches: quy định những ai có thể push tới branch
+2. git push
+- Push commit tới remote repo
+- Thông thường chỉ cho phép push (giả sử đẩy commit A tới branch main hiện đang ở commit B) khi commit A là hậu duệ của commit B (fast-forward), B->...->A
+- Một số option:
++ set-upstream: set branch tại local để theo dỗi branch tại remote, nghĩa là mỗi khi pull từ remote về thì thay đổi trên branch được theo dõi sẽ được update tới branch theo dõi
++ force: thay đổi default behavior ở trên, ép branch ở remote phải nhảy tới commit được push lên ngay cả khi không phải là fast-forward
+- Thường dùng: git push <tên remote repo> <branch tại local>[:<branch tại remote>]
+VD: 
+- git push origin: push HEAD tới upstream branch của nó (chỉ push nếu cùng tên)
+- git push origin master: push commit từ branch master ở local tới branch master ở origin
+- git push origin branch1:branch2: push commit từ branch1 ở local tới branch2 ở origin
+
+3. git cherry pick
