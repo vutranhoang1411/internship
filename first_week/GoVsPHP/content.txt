@@ -21,7 +21,6 @@ code có thể nhúng vào html (thực ra là file php có html syntax)
 network (mạng) và những dự án có source code rất lớn
 - static typed (type của 1 biến được xác định ở compile time) và strong type 
 - Pros:
-+ Có standard library cho testing, có lượng standard library tốt
 + Strong và static type nên bắt lỗi nhanh từ lúc code + precompile, tránh lỗi ở runtime
 + Compile nhanh, chạy nhanh
 + Hỗ trợ concurrency tốt, sử dụng goroutine (1 dạng lightweight thread) và channel

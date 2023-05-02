@@ -12,6 +12,7 @@
 + Lock branch: đảm bảo không có commit nào có thể được tạo ra trên branch đã khoá
 + Do not allow bypassing the above settings: dùng để áp dụng tất cả protection rule ngay cả với admin
 + Restrict who can push to matching branches: quy định những ai có thể push tới branch
+
 2. git push
 - Push commit tới remote repo
 - Thông thường chỉ cho phép push (giả sử đẩy commit A tới branch main hiện đang ở commit B) khi commit A là hậu duệ của commit B (fast-forward), B->...->A
@@ -25,3 +26,8 @@ VD:
 - git push origin branch1:branch2: push commit từ branch1 ở local tới branch2 ở origin
 
 3. git cherry pick
+- Lấy những thay đổi ở 1 commit nào đó và apply nó lên current branch
+- Giả sử đứng từ HEAD, ta cherry pick 1 commit B, git sẽ apply diff giữa 2 commit lên head, tạo 1 commit mới (khác với git merge xài 3 way merge)
+- git rebase là 1 chuỗi những cherry pick
+vd:
+ git cherry-pick feature~2
