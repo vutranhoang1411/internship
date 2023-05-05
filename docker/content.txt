@@ -1,0 +1,17 @@
+- Docker file (instruction to build docker image) -> docker image (contain layer of content that will exist in docker container) -> container (running instance of docker image, need to configure port, env before run)
+
+1. Docker image
+- Build bằng cách chồng từng layer lên nhau, mỗi instruction sẽ add 1 layer vào cái docker file (OS -> apt-get ....)
+2. CMD vs Entry point
+- CMD: default lệnh để run trong container, có thể thay thế được ở runtime (CMD: ["python","manage.py","runserver"])
+- Entry point: khi có entry point, cmd sẽ được append vào thằng entry point để chạy, CMD dạng kiểu như parameter cho thằng entry point
+3. Network
+- Mỗi thằng container như một máy riêng, khi được tạo ra theo default (không xài compose hay set network riêng) chúng sẽ chung 1 network (kiểu subnet) nhưng khác địa chỉ IP nhau -> không thể connect với nhau xài dạng kiểu localhost
+- Để nối các container thì có 2 cách:
++ Ghi rõ địa chỉ IP của thằng mình cần nối (đương nhiên phải chung network mới nối được)
++ Cho nó chung vô 1 network và truy cập bằng tên của nhau, chỉ xài được ở user-defined network, nó có 1 cái dạng kiểu embedded DNS, resolve từ cái tên -> địa chỉ IP
+4. Storage
+- Theo dạng layer bên trên, thì cái image là 1 tập read-only gồm nhiều layer, khi mình build từ Dockerfile thì nội dung của được lưu vô cái image rồi, content của nó có thể được share bởi nhiều container instance (chỉ đọc)
+- Khi chạy 1 container, có 1 layer container được tạo ra và chồng lên đống layer của image, layer này là read-write, nghĩa là mình modify được nó, khi modify content nằm trong image thì nó tự tạo 1 cái copy bỏ vô layer container, nghĩa là container không thể modify content của image mà chỉ có thể modify những cái của chính mình
+- Để mount 1 volumn thì xài -v <source ở local>:<dest trong container>, có thể xài volumn của docker (được tạo và lưu trong /var/lib/docker/volumns) hoặc xài 1 cái directory bất kì trong máy
+- Khi mount ntn thì bất cứ cái gì mình modify ở cái dest trong container sẽ được lưu ở cái directory source, dạng kiểu như mount 1 cái directory tới 1 cái filesystem
